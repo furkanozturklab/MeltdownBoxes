@@ -1,0 +1,271 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:MeltdownBoxes.ViewModels.Converters"
+                    xmlns:vm="clr-namespace:MeltdownBoxes.ViewModels">
+
+
+
+
+    <converters:StringIsNullOrEmptyConverter x:Key="StringNull"/>
+    <converters:StringIsNullOrEmptyConverterReverse x:Key="StringNullReverse"/>
+    <converters:LineHeightSum x:Key="LineHeightSum"/>
+
+
+    <Style TargetType="TextBlock">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+    </Style>
+
+    <Style TargetType="Border">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+    </Style>
+
+    <Style TargetType="StackPanel">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+    </Style>
+
+
+    <Style TargetType="Grid">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+    </Style>
+
+    <Style x:Key="AlertBoxText" TargetType="{x:Type TextBlock}">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="ContentControl">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+    </Style>
+
+    <Style x:Key="AlertBoxClosed" TargetType="Button">
+        <Setter Property="Width" Value="{Binding ClosedWidth}"/>
+        <Setter Property="Height" Value="{Binding ClosedHeight}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Command" Value="{Binding ClosedClick}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" CornerRadius="10" x:Name="br_temp">
+                        <Image Source="{Binding ClosedImageSource}" Width="{Binding ClosedIconWidth}" Height="{Binding ClosedIconHeight}" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" UseLayoutRounding="True" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{Binding HoverColor}" TargetName="br_temp"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+
+    <Style x:Key="AlertBoxBase" TargetType="ContentControl">
+
+        <Setter Property="Width" Value="{Binding SizeWidth}"/>
+        <Setter Property="Height" Value="{Binding SizeHeight}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Margin" Value="0,0,0,10"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding ColumnOne}"/>
+                            <!--Type Color-->
+                            <ColumnDefinition Width="{Binding ColumnTwo}"/>
+                            <!--Type Icon-->
+                            <ColumnDefinition Width="{Binding ColumnThree}"/>
+                            <!--Content-->
+                            <ColumnDefinition Width="{Binding ColumnFour}"/>
+                            <!--Closed Button-->
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{Binding RowOne}"/>
+                            <!-- Content -->
+                            <RowDefinition Height="{Binding RowTwo}"/>
+                            <!--Progressbar height-->
+                        </Grid.RowDefinitions>
+
+                        <!-- Type Color -->
+                        <Border Width="5" Background="{Binding TypeColors}" Grid.Column="0" Grid.RowSpan="2" CornerRadius="5,0,0,5"/>
+
+                        <!-- Type Icon -->
+                        <Border Background="{Binding TypeBackgroundColors}" Grid.Column="1" Grid.RowSpan="2">
+                            <Image Source="{Binding ImageSource}" Width="{Binding ImageWidth}" Height="{Binding ImageHeight}" />
+                        </Border>
+
+                        <!-- Content -->
+                        <Border Grid.Column="2" Grid.RowSpan="2" Background="{Binding TypeBackgroundColors}">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+
+                                <!-- Title Style -->
+                                <TextBlock Text="{Binding Title}" FontSize="{Binding TitleFontSizeV}" FontWeight="{Binding TitleFontWeightsV}" Foreground="{Binding StringColor}" Visibility="{Binding Title, Converter={StaticResource StringNullReverse}}" Style="{StaticResource AlertBoxText}" Margin="0,0,0,5"/>
+
+                                <!-- Message Style -->
+                                <TextBlock Text="{Binding Message}" FontSize="{Binding MessageFontSizeV}" FontWeight="{Binding MessageFontWeightsV}" Foreground="{Binding StringColor}" Visibility="{Binding Message, Converter={StaticResource StringNullReverse}}" Style="{StaticResource AlertBoxText}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" LineHeight="{Binding MessageFontSizeV}" Height="{Binding MessageFontSizeV,Converter={StaticResource LineHeightSum}}" LineStackingStrategy="BlockLineHeight" />
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Closed Button -->
+                        <Border Grid.Column="3" Grid.RowSpan="2" CornerRadius="0,5,5,0" Background="{Binding TypeBackgroundColors}">
+                            <Button Style="{StaticResource AlertBoxClosed}"/>
+                        </Border>
+
+                        <!-- Progress Bar -->
+                        <Border x:Name="progressBorder" Panel.ZIndex="2" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="4" Background="{Binding TypeColors}" Width="{Binding ProgressWidth}" CornerRadius="5,2,2,5" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+
+
+
+    <DrawingImage x:Key="alertWarningDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#ea580c" Geometry="F1 M512,512z M0,0z M501.362,383.95L320.497,51.474C291.438,2.553,220.601,2.488,191.503,51.474L10.647,383.95C-19.059,433.939,16.906,497.241,75.129,497.241L436.865,497.241C495.039,497.241,531.068,433.99,501.362,383.95z M256,437.241C239.462,437.241 226,423.779 226,407.241 226,390.703 239.462,377.241 256,377.241 272.538,377.241 286,390.703 286,407.241 286,423.779 272.538,437.241 256,437.241z M286,317.241C286,333.779 272.538,347.241 256,347.241 239.462,347.241 226,333.779 226,317.241L226,167.241C226,150.703 239.462,137.241 256,137.241 272.538,137.241 286,150.703 286,167.241L286,317.241z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="closedWarningDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#ea580c" Geometry="F0 M24,24z M0,0z M5,17.586A1,1,0,1,0,6.415,19.001L12,13.414 17.586,19A1,1,0,0,0,19,17.586L13.414,12 19,6.414A1,1,0,0,0,17.585,5L12,10.586 6.414,5A1,1,0,0,0,5,6.414L10.586,12z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+
+    <DrawingImage x:Key="alertSuccessDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V408.576 H408.576 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#16a34a" Geometry="F1 M408.576,408.576z M0,0z M204.288,0C91.648,0 0,91.648 0,204.288 0,316.928 91.648,408.576 204.288,408.576 316.928,408.576 408.576,316.928 408.576,204.288 408.576,91.648 316.928,0 204.288,0z M318.464,150.528L187.904,280.064C180.224,287.744,167.936,288.256,159.744,280.576L90.624,217.6C82.432,209.92 81.92,197.12 89.088,188.928 96.768,180.736 109.568,180.224 117.76,187.904L172.544,238.08 289.28,121.344C297.472,113.152 310.272,113.152 318.464,121.344 326.656,129.536 326.656,142.336 318.464,150.528z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="closedSuccessDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#16a34a" Geometry="F0 M24,24z M0,0z M5,17.586A1,1,0,1,0,6.415,19.001L12,13.414 17.586,19A1,1,0,0,0,19,17.586L13.414,12 19,6.414A1,1,0,0,0,17.585,5L12,10.586 6.414,5A1,1,0,0,0,5,6.414L10.586,12z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+
+    <DrawingImage x:Key="alertOtherDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <DrawingGroup Opacity="1">
+                        <DrawingGroup Opacity="1">
+                            <DrawingGroup Opacity="1">
+                                <GeometryDrawing Brush="#475569">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry RadiusX="256" RadiusY="256" Rect="0,0,512,512" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M512,512z M0,0z M167.67,196.113Q167.67,179.331 178.446,162.106 189.222,144.881 209.892,133.574 230.564,122.274 258.12,122.268 283.731,122.268 303.345,131.72 322.959,141.172 333.645,157.425A63.061,63.061,0,0,1,344.333,192.756Q344.333,207.772,338.233,219.079A80.469,80.469,0,0,1,323.747,238.599Q315.357,246.816,293.628,266.247A122.942,122.942,0,0,0,284,275.875A39.065,39.065,0,0,0,278.613,283.475A36.932,36.932,0,0,0,275.875,290.365Q274.901,293.811 272.959,302.465 269.601,320.84 251.938,320.837A21.482,21.482,0,0,1,236.479,314.831Q230.206,308.831 230.208,296.989 230.208,282.15 234.8,271.289A65.3,65.3,0,0,1,246.99,252.2A279.09,279.09,0,0,1,267.482,232.679Q278.787,222.788,283.825,217.751A50.613,50.613,0,0,0,292.303,206.533A27.13,27.13,0,0,0,295.747,193.107A31.225,31.225,0,0,0,285.237,169.258Q274.723,159.546 258.12,159.542 238.686,159.542 229.502,169.342 220.318,179.142 213.954,198.225 207.947,218.2 191.166,218.2A22.394,22.394,0,0,1,174.471,211.222Q167.67,204.241,167.67,196.113z M253.881,389.732A27.794,27.794,0,0,1,235.067,382.754Q227.025,375.778,227.028,363.233A25.151,25.151,0,0,1,234.8,344.507A26.263,26.263,0,0,1,253.881,336.907A25.946,25.946,0,0,1,280.2,363.233Q280.2,375.601,272.249,382.665A26.824,26.824,0,0,1,253.881,389.732z" />
+                            </DrawingGroup>
+                        </DrawingGroup>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="closedOtherDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#475569" Geometry="F0 M24,24z M0,0z M5,17.586A1,1,0,1,0,6.415,19.001L12,13.414 17.586,19A1,1,0,0,0,19,17.586L13.414,12 19,6.414A1,1,0,0,0,17.585,5L12,10.586 6.414,5A1,1,0,0,0,5,6.414L10.586,12z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+
+    <DrawingImage x:Key="alertInfoDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#0284c7" Geometry="F1 M512,512z M0,0z M256,0C114.509,0 0,114.496 0,256 0,397.489 114.496,512 256,512 397.491,512 512,397.504 512,256 512,114.511 397.504,0 256,0z M282.289,357.621C282.289,365.709 270.495,373.795 256.005,373.795 240.841,373.795 230.059,365.709 230.059,357.621L230.059,229.234C230.059,219.799 240.842,213.395 256.005,213.395 270.495,213.395 282.289,219.799 282.289,229.234L282.289,357.621z M256.006,182.396C240.505,182.396 228.375,170.939 228.375,158.133 228.375,145.328 240.506,134.208 256.006,134.208 271.17,134.208 283.302,145.328 283.302,158.133 283.302,170.939 271.169,182.396 256.006,182.396z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="closedInfoDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#0284c7" Geometry="F0 M24,24z M0,0z M5,17.586A1,1,0,1,0,6.415,19.001L12,13.414 17.586,19A1,1,0,0,0,19,17.586L13.414,12 19,6.414A1,1,0,0,0,17.585,5L12,10.586 6.414,5A1,1,0,0,0,5,6.414L10.586,12z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+
+    <DrawingImage x:Key="alertErrorDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#dc2626" Geometry="F1 M24,24z M0,0z M12,1A11,11,0,1,0,23,12A11.013,11.013,0,0,0,12,1z M16.242,14.829A1,1,0,1,1,14.828,16.243L12,13.414 9.172,16.243A1,1,0,0,1,7.758,14.829L10.586,12 7.758,9.171A1,1,0,1,1,9.172,7.757L12,10.586 14.828,7.757A1,1,0,1,1,16.242,9.171L13.414,12z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="closedErrorDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#dc2626" Geometry="F0 M24,24z M0,0z M5,17.586A1,1,0,1,0,6.415,19.001L12,13.414 17.586,19A1,1,0,0,0,19,17.586L13.414,12 19,6.414A1,1,0,0,0,17.585,5L12,10.586 6.414,5A1,1,0,0,0,5,6.414L10.586,12z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+
+
+
+
+
+
+</ResourceDictionary>

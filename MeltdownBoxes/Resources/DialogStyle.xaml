@@ -1,0 +1,232 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <Color x:Key="Base.Shadow.Dark">#FF1C1E2F</Color>
+
+    <!-- Slate 950 -->
+    <SolidColorBrush x:Key="Base.Text.S95" Color="#020617" />
+
+    <!-- Slate 800 -->
+    <SolidColorBrush x:Key="Base.Text.S9" Color="#0f172a" />
+
+    <!-- Slate 800 -->
+    <SolidColorBrush x:Key="Base.Text.S8" Color="#1e293b" />
+
+    <!-- Slate 700 -->
+    <SolidColorBrush x:Key="Base.Text.S7" Color="#334155"/>
+
+    <!-- Slate 600 -->
+    <SolidColorBrush x:Key="Base.Text.S6" Color="#475569"/>
+
+    <!-- Slate 500 -->
+    <SolidColorBrush x:Key="Base.Text.S5" Color="#64748b"/>
+
+    <!-- Slate 500 -->
+    <SolidColorBrush x:Key="Base.Text.S4" Color="#94a3b8"/>
+
+
+    <Style x:Key="DefaultPopupBackground" TargetType="Border">
+
+        <Setter Property="Background" Value="#fff"/>
+        <Setter Property="BorderBrush" Value="#CBD0DD"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="10"/>
+   
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="15" Opacity="0.15"  ShadowDepth="1" Direction="-25" Color="{StaticResource Base.Shadow.Dark}" />
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+
+
+    <DrawingImage x:Key="ConfirmedDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="#FF29C8A0" Geometry="F1 M24,24z M0,0z M17,2L7,2A3.009,3.009,0,0,0,4,5L4,19A3.009,3.009,0,0,0,7,22L15,22A1.033,1.033,0,0,0,15.71,21.71L19.71,17.71A1.033,1.033,0,0,0,20,17L20,5A3.009,3.009,0,0,0,17,2z" />
+                        <GeometryDrawing Brush="#FFD6FFED" Geometry="F1 M24,24z M0,0z M20,17A1.033,1.033,0,0,1,19.71,17.71L15.71,21.71A1.033,1.033,0,0,1,15,22L15,18A1,1,0,0,1,16,17z M11,15A1,1,0,0,1,10.293,14.707L8.293,12.707A1,1,0,0,1,9.707,11.293L11,12.586 14.293,9.293A1,1,0,0,1,15.707,10.707L11.707,14.707A1,1,0,0,1,11,15z" />
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="RetryDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#FF406080" Geometry="F1 M512,512z M0,0z M79.629,386.342C47.637,350.541 30,304.369 30,256.337 30,186.991 67.324,122.275 127.412,87.47L142.471,113.427C91.611,142.899 60,197.655 60,256.337 60,296.986 74.912,336.054 102.012,366.332z" />
+                    <GeometryDrawing Brush="#FF406080" Geometry="F1 M512,512z M0,0z M225,451.337L0,451.337 0,421.337 225,421.337C315.967,421.337 390,347.318 390,256.337 390,165.356 315.967,91.337 225,91.337 216.65,91.337 208.213,91.967 199.98,93.212L195.468,63.564A197.628,197.628,0,0,1,224.999,61.337C332.519,61.337 419.999,148.817 419.999,256.337 419.999,363.857 332.52,451.337 225,451.337z" />
+                    <GeometryDrawing Brush="#FF68C9E0" Geometry="F1 M512,512z M0,0z M255,226.337L225,378.137 120,325.637 120,202.037z" />
+                    <GeometryDrawing Brush="#FF429ED9" Geometry="F1 M512,512z M0,0z M330,202.037L330,325.637 225,378.137 225,256.337 247.5,199.187z" />
+                    <GeometryDrawing Brush="#FF293D66" Geometry="F1 M512,512z M0,0z M456.395,380.731L435.184,401.942 454.578,421.337 353.584,421.337 353.584,451.337 454.578,451.337 435.184,470.731 456.395,491.942 512,436.337z" />
+                    <GeometryDrawing Brush="#FF406080" Geometry="F1 M512,512z M0,0z M229.395,131.269L173.789,75.663 229.395,20.058 250.605,41.269 216.211,75.663 250.605,110.058z" />
+                    <GeometryDrawing Brush="#FF8DF4E6" Geometry="F1 M512,512z M0,0z M330,202.037L225,256.337 120,202.037 225,149.537z" />
+                    <GeometryDrawing Brush="#FF68C9E0" Geometry="F1 M512,512z M0,0z M330,202.037L225,149.537 225,256.337z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+
+    <DrawingImage x:Key="WarningDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="#FFFEDB29" Geometry="F1 M24,24z M0,0z M21.94,6.74L17.26,2.06A2.74,2.74,0,0,0,15.26,1.25L8.69,1.25A2.74,2.74,0,0,0,6.74,2.06L2.06,6.74A2.74,2.74,0,0,0,1.25,8.69L1.25,15.31A2.74,2.74,0,0,0,2.06,17.31L6.74,21.99A2.74,2.74,0,0,0,8.69,22.8L15.31,22.8A2.74,2.74,0,0,0,17.31,21.99L21.99,17.31A2.74,2.74,0,0,0,22.8,15.31L22.8,8.69A2.74,2.74,0,0,0,21.94,6.74z" />
+                        <DrawingGroup Opacity="1">
+                            <GeometryDrawing Brush="#FF14264E" Geometry="F1 M24,24z M0,0z M12,14.12A1,1,0,0,1,11,13.12L11,7.62A1,1,0,0,1,13,7.62L13,13.12A1,1,0,0,1,12,14.12z M12,17.38A1.26,1.26,0,1,1,13.25,16.13A1.26,1.26,0,0,1,12,17.38z" />
+                        </DrawingGroup>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="ContinueDrawingImage">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="#FF54C4CC" Geometry="F0 M512,512z M0,0z M55.327,288L366.164,288 268.994,385.17C256.549,397.615 256.549,417.979 268.994,430.424 281.439,442.869 301.803,442.869 314.248,430.424L443.418,301.254 488.672,256 443.418,210.746 314.248,81.576C301.803,69.131 281.439,69.131 268.994,81.576 256.549,94.021 256.549,114.385 268.994,126.83L366.164,224 55.327,224C37.727,224 23.328,238.4 23.328,255.999 23.328,273.6 37.728,288 55.327,288z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <Style x:Key="BoxButton" TargetType="{x:Type Button}">
+
+        <Setter Property="Background" Value="{Binding BtnBack}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{Binding BtnBor}"/>
+        <!--<Setter Property="Margin" Value="5,0,0,0"/>-->
+        <Setter Property="Width" Value="{Binding BtnW}"/>
+        <Setter Property="Height" Value="{Binding BtnH}"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="ReplyOneButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BoxButton}">
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border x:Name="bt_border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="0.5" CornerRadius="3" Padding="5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <TextBlock x:Name="textBlock" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" FontSize="{Binding RepBtnFS}" Foreground="{Binding RepBtnFC}" FontWeight="{Binding RepBtnFW}" VerticalAlignment="Center" HorizontalAlignment="Center"  TextAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{Binding RepOBtnHC}" TargetName="bt_border"/>
+                            <Setter Property="BorderBrush" Value="{Binding RepOBtnHC}" TargetName="bt_border"/>
+                            <Setter Property="Foreground" Value="{Binding RepOBtnTC}" TargetName="textBlock"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{Binding RepOBtnHC}" TargetName="bt_border"/>
+                            <Setter Property="BorderBrush" Value="{Binding RepOBtnHC}" TargetName="bt_border"/>
+                            <Setter Property="Foreground" Value="{Binding RepOBtnTC}" TargetName="textBlock"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="ReplyTwoButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BoxButton}">
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border x:Name="bt_border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="0.5" CornerRadius="3" Padding="5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <TextBlock x:Name="textBlock" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" FontSize="{Binding RepBtnFS}" Foreground="{Binding RepBtnFC}" FontWeight="{Binding RepBtnFW}" VerticalAlignment="Center" HorizontalAlignment="Center"  TextAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{Binding RepTBtnHC}" TargetName="bt_border"/>
+                            <Setter Property="BorderBrush" Value="{Binding RepTBtnHC}" TargetName="bt_border"/>
+                            <Setter Property="Foreground" Value="{Binding RepTBtnTC}" TargetName="textBlock"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{Binding RepTBtnHC}" TargetName="bt_border"/>
+                            <Setter Property="BorderBrush" Value="{Binding RepTBtnHC}" TargetName="bt_border"/>
+                            <Setter Property="Foreground" Value="{Binding RepTBtnTC}" TargetName="textBlock"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+
+    <Style x:Key="ConfirmedDialog" TargetType="ContentControl">
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid Width="{Binding SizeW}" Height="{Binding SizeH}" >
+                        <Border Style="{StaticResource DefaultPopupBackground}">
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="{Binding RowOne}"/>
+                                    <RowDefinition Height="{Binding RowTwo}"/>
+                                    <RowDefinition Height="{Binding RowThree}"/>
+                                </Grid.RowDefinitions>
+
+
+                                <StackPanel Grid.ColumnSpan="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Image Source="{Binding ImSource}" RenderOptions.BitmapScalingMode="HighQuality" Width="{Binding ImW}" Height="{Binding ImH}"/>
+                                </StackPanel>
+
+
+                                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Top" HorizontalAlignment="Center">
+
+                                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" Foreground="{Binding TitleFC}" FontSize="{Binding TitleFS}" FontWeight="{Binding TitleFW}" Margin="0,5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+
+                                    <TextBlock Text="{Binding Message}" TextWrapping="Wrap" Foreground="{Binding MesFC}" FontSize="{Binding MesFS}" FontWeight="{Binding MesFW}" />
+
+                                </StackPanel>
+
+
+                                <Button Style="{StaticResource ReplyOneButton}" Content="{Binding ReplyOneText}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Command="{Binding ReplyCommand}" CommandParameter="{Binding ReplyOneValue}"/>
+
+                                <Button Style="{StaticResource ReplyTwoButton}" Content="{Binding ReplyTwoText}" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Command="{Binding ReplyCommand}" CommandParameter="{Binding ReplyTwoValue}"/>
+
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
