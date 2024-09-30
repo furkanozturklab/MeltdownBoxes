@@ -50,7 +50,7 @@ namespace MeltdownBoxes.Controls
         public static AlertSize AlertControllerSize = AlertSize.Medium;
         public static int MaxChild = 6;
         public static int MaxBufferChild = 20;
-        public static int ShowDuration = 3000;
+        public static int ShowDuration = 5000;
         public static PopupAnimation _popupAnimation = PopupAnimation.Fade;
 
         #endregion

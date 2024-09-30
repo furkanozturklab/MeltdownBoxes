@@ -32,8 +32,6 @@ namespace MeltdownBoxes.ViewModels.DialogBox
 
             if (disposing)
             {
-                Debug.WriteLine("DialogBoxVm Dispose start");
-
                 resourceDictionary = null;
                 _dialogType = null;
                 _tcs = null;

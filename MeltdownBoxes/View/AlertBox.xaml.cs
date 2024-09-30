@@ -56,8 +56,6 @@ namespace MeltdownBoxes.View
             if (disposing)
             {
                 Debug.WriteLine("AlertBox dispose");
-
-                // Vm zaten endtask ile dispose oluyor.
                 _vm = null;
             }
             _disposed = true;

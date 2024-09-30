@@ -159,22 +159,17 @@ namespace MeltdownBoxes.Models.Structs
 
         public static DialogTypeOptions GetDialogTypeOptions(DialogType dialogType, ResourceDictionary rs)
         {
-
-
             return dialogType switch
             {
 
-                DialogType.Confirmation => new DialogTypeOptions((DrawingImage)rs["ConfirmedDrawingImage"], "#1e293b", "#475569", "Evet", "Hayır", "true", "false", "#F5F7FA", "#CBD0DD", "#1e293b", "#22c55e", "#FFFFFF", "#dc2626", "#FFFFFF"),
-                DialogType.Continue => new DialogTypeOptions((DrawingImage)rs["ContinueDrawingImage"], "#1e293b", "#475569", "Devam", "İptal", "true", "false", "#F5F7FA", "#CBD0DD", "#1e293b", "#54C4CC", "#FFFFFF", "#fbbf24", "#1e293b"),
-                DialogType.Retry => new DialogTypeOptions((DrawingImage)rs["RetryDrawingImage"], "#1e293b", "#475569", "Devam", "İptal", "true", "false", "#F5F7FA", "#CBD0DD", "#1e293b", "#22c55e", "#FFFFFF", "#dc2626", "#FFFFFF"),
-                DialogType.Warning => new DialogTypeOptions((DrawingImage)rs["WarningDrawingImage"], "#1e293b", "#475569", "Evet", "Hayır", "true", "false", "#F5F7FA", "#CBD0DD", "#1e293b", "#22c55e", "#FFFFFF", "#dc2626", "#FFFFFF"),
+                DialogType.Confirmation => new DialogTypeOptions((DrawingImage)rs["ConfirmedDrawingImage"], "#1e293b", "#475569", "Yes", "No", "true", "false", "#F5F7FA", "#CBD0DD", "#1e293b", "#22c55e", "#FFFFFF", "#dc2626", "#FFFFFF"),
+                DialogType.Continue => new DialogTypeOptions((DrawingImage)rs["ContinueDrawingImage"], "#1e293b", "#475569", "Continue", "Cancel", "true", "false", "#F5F7FA", "#CBD0DD", "#1e293b", "#54C4CC", "#FFFFFF", "#fbbf24", "#1e293b"),
+                DialogType.Retry => new DialogTypeOptions((DrawingImage)rs["RetryDrawingImage"], "#1e293b", "#475569", "Continue", "Cancel", "true", "false", "#F5F7FA", "#CBD0DD", "#1e293b", "#22c55e", "#FFFFFF", "#dc2626", "#FFFFFF"),
+                DialogType.Warning => new DialogTypeOptions((DrawingImage)rs["WarningDrawingImage"], "#1e293b", "#475569", "Yes", "No", "true", "false", "#F5F7FA", "#CBD0DD", "#1e293b", "#22c55e", "#FFFFFF", "#dc2626", "#FFFFFF"),
                 _ => throw new ArgumentOutOfRangeException(nameof(dialogType), dialogType, null)
             };
 
         }
-
-
-
 
     }
 

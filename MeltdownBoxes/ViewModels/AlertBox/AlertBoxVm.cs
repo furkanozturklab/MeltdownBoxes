@@ -51,8 +51,6 @@ namespace MeltdownBoxes.ViewModels
 
             if (disposing)
             {
-                Debug.WriteLine("AlertBoxVm Dispose start");
-
                 _timer!.Tick -= DispatcherTimer_Tick;
                 _timer = null;
                 _duration = null;
@@ -137,7 +135,7 @@ namespace MeltdownBoxes.ViewModels
                 _timer.Interval = TimeSpan.FromMilliseconds(15);
                 _timer.Tick += DispatcherTimer_Tick;
                 _duration = BoxController.ShowDuration;// 3 seconds 3000 milisaniye default
-         
+
                 _initialWidth = ProgressWidth;
                 _currentWidth = _initialWidth;
 
@@ -146,7 +144,7 @@ namespace MeltdownBoxes.ViewModels
             {
 
                 Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace); 
+                Debug.WriteLine(ex.StackTrace);
                 throw new InvalidOperationException("Could not create AlertBoxVm");
             }
 
